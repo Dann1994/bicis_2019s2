@@ -1,6 +1,7 @@
 class Deposito {
 	const bicicletas = []
 	
+	method agregarBici(unaBici) = bicicletas.add(unaBici)
 	method bicisRapidas() = bicicletas.filter({ bici => bici.velocidadCrucero() > 25 })
 	method marcas() = bicicletas.map({ bici => bici.marca() }).asSet()
 	method esNocturno() = bicicletas.all({ bici => bici.tieneLuz() })
@@ -12,4 +13,7 @@ class Deposito {
     }
     method bicisSinAccesorios() = bicicletas.count({ bici => bici.accesorios().size() == 0 })
     method bicisCompanierasDe(unaBici) = bicicletas.filter({ bici => bici.esCompanieraDe(unaBici) })
+    
+    method teieneUnaCompaniera(unaBici) = bicicletas.any({ bici => bici.esCompanieraDe(unaBici) })
+    method tieneBicisComnieras() = bicicletas.any({ bici => self.teieneUnaCompaniera(bici)})
 }

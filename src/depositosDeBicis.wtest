@@ -4,15 +4,16 @@ import depositos.*
 
 
 test "Bicicletas" {
+	//Accesorio
 	const canasto      = new Canasto(volumen = 8)
 	const morralGrande = new MorralDeBici(largo = 21, ojoDeGato = true)
 	const morralChico  = new MorralDeBici(largo = 6, ojoDeGato = false)
-	
+	//Bicicletas
 	const biciOlmo     = new Bicicleta(rodado = 28, largo = 150, marca = "olmo", accesorios = [farolito])
 	const biciLegnano  = new Bicicleta(rodado = 26, largo = 110, marca = "legnano", accesorios = [farolito,canasto, morralGrande] )
 	const biciLegnano2 = new Bicicleta(rodado = 20, largo = 90, marca = "legnano", accesorios = [morralChico])
     
-	//bici Olmo
+	//Bici Olmo
 	assert.equals(85,biciOlmo.altura())
 	assert.equals(34,biciOlmo.velocidadCrucero())
 	assert.equals(0,biciOlmo.carga())
@@ -20,7 +21,7 @@ test "Bicicletas" {
 	assert.equals(1,biciOlmo.cantAccesoriosLivianos())
 	assert.equals(true,biciOlmo.tieneLuz())
 	
-	//bici Lesgnano
+	//Bici Lesgnano
 	assert.equals(80,biciLegnano.altura())
 	assert.equals(28,biciLegnano.velocidadCrucero())
 	assert.equals(23,biciLegnano.carga())
@@ -28,7 +29,7 @@ test "Bicicletas" {
 	assert.equals(2,biciLegnano.cantAccesoriosLivianos())
 	assert.equals(true,biciLegnano.tieneLuz())
 	
-	//bici Lesgnano2
+	//Bici Lesgnano2
 	assert.equals(65,biciLegnano2.altura())
 	assert.equals(22,biciLegnano2.velocidadCrucero())
 	assert.equals(2,biciLegnano2.carga())
@@ -38,14 +39,15 @@ test "Bicicletas" {
 }
 
 test "Deposito" {
+	//Accesorio
 	const canasto      = new Canasto(volumen = 8)
 	const morralGrande = new MorralDeBici(largo = 21, ojoDeGato = true)
 	const morralChico  = new MorralDeBici(largo = 6, ojoDeGato = false)
-	
+	//Bicicletas
 	const biciOlmo     = new Bicicleta(rodado = 28, largo = 150, marca = "olmo", accesorios = [farolito])
 	const biciLegnano  = new Bicicleta(rodado = 26, largo = 110, marca = "legnano", accesorios = [farolito,canasto, morralGrande] )
 	const biciLegnano2 = new Bicicleta(rodado = 20, largo = 90, marca = "legnano", accesorios = [morralChico])
-	
+	//Deposito
     const deposito = new Deposito(bicicletas = [biciOlmo, biciLegnano, biciLegnano2])
     
     assert.equals([biciOlmo, biciLegnano],deposito.bicisRapidas())
@@ -56,4 +58,11 @@ test "Deposito" {
     assert.equals(0,deposito.cargaDeBicisLargas())
     assert.equals(0,deposito.bicisSinAccesorios())
     assert.equals([],deposito.bicisCompanierasDe(biciLegnano2))
+    assert.equals(false, deposito.tieneBicisComnieras())
+    
+    //Desafio
+    const biciLegnano3 = new Bicicleta(rodado = 20, largo = 105, marca = "legnano", accesorios = [morralChico])
+    deposito.agregarBici(biciLegnano3)
+    
+    assert.equals(true, deposito.tieneBicisComnieras())
 }

@@ -12,8 +12,8 @@ class Bicicleta {
 	method peso() = rodado / 2 + accesorios.sum({ accesorio => accesorio.peso() })
 	method tieneLuz() = accesorios.any({ accesorio => accesorio.esLuminoso() })	 
 	method cantAccesoriosLivianos() = accesorios.count({ accesorio => accesorio.peso() < 1 })   
-	
+
 	method mismaMarcaQue(unaBici) = self.marca() == unaBici.marca() && self != unaBici 
-	method largoSimilarA(unaBici) = (self.largo() - unaBici.largo()).abs() < 10 && self != unaBici 
+	method largoSimilarA(unaBici) = (largo - unaBici.largo()).abs() < 10 && self != unaBici 
 	method esCompanieraDe(unaBici) = self.mismaMarcaQue(unaBici) && self.largoSimilarA(unaBici)
 }
