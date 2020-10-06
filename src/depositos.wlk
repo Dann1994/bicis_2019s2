@@ -15,5 +15,5 @@ class Deposito {
     method bicisCompanierasDe(unaBici) = bicicletas.filter({ bici => bici.esCompanieraDe(unaBici) })
     
     method teieneUnaCompaniera(unaBici) = bicicletas.any({ bici => bici.esCompanieraDe(unaBici) })
-    method tieneBicisComnieras() = bicicletas.any({ bici => self.teieneUnaCompaniera(bici)})
+    method tieneBicisCompanieras() = bicicletas.any({ bici => self.teieneUnaCompaniera(bici)})
 }

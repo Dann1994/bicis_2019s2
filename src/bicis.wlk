@@ -17,3 +17,4 @@ class Bicicleta {
 	method largoSimilarA(unaBici) = (largo - unaBici.largo()).abs() < 10 && self != unaBici 
 	method esCompanieraDe(unaBici) = self.mismaMarcaQue(unaBici) && self.largoSimilarA(unaBici)
 }
+

@@ -58,11 +58,12 @@ test "Deposito" {
     assert.equals(0,deposito.cargaDeBicisLargas())
     assert.equals(0,deposito.bicisSinAccesorios())
     assert.equals([],deposito.bicisCompanierasDe(biciLegnano2))
-    assert.equals(false, deposito.tieneBicisComnieras())
+    assert.equals(false, deposito.tieneBicisCompanieras())
     
     //Desafio
     const biciLegnano3 = new Bicicleta(rodado = 20, largo = 105, marca = "legnano", accesorios = [morralChico])
     deposito.agregarBici(biciLegnano3)
     
-    assert.equals(true, deposito.tieneBicisComnieras())
+    assert.equals(true, deposito.tieneBicisCompanieras())
+  
 }
